@@ -1,17 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import { useRef } from 'react';
-import { useEffect } from 'react';
-import WeatherItem from './components/WeatherItem/WeatherItem';
 import WeatherItemTemp from './components/WeatherItem/WeatherItemTemp';
 import WeatherItemMaxMin from './components/WeatherItem/WeatherItemMaxMin';
 import WeatherItemPressure from './components/WeatherItem/WeatherItemPressure';
 import WeatherItemWind from './components/WeatherItem/WeatherItemWind';
 import Title from './components/Title/Title';
-import WeatherMap from './components/WeatherMap/WeatherMap';
-import 'leaflet/dist/leaflet.css';
-import classes from './components/WeatherMap/WeatherMap.module.css'
 
 
 
@@ -99,7 +93,7 @@ function App() {
             <WeatherItemTemp temp={weatherData.main.temp} desc={weatherData.weather[0].description} image={weatherData.weather[0].icon}></WeatherItemTemp>
             <WeatherItemWind wind_speed={weatherData.wind.speed} wind_deg={weatherData.wind.deg}></WeatherItemWind>
           </div>
-          <WeatherMap></WeatherMap>
+          {/*<WeatherMap></WeatherMap>*/}
           {/* <div className={classes.weatherMap} id="map"></div> */}
         </div>
       </div>
@@ -108,3 +102,4 @@ function App() {
 }
 
 export default App;
+
