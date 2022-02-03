@@ -1,0 +1,19 @@
+https://leafletjs.com для отображения карт
+
+
+{"coord":{"lon":30.3364,"lat":53.9139},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"stations","main":{"temp":290.01,"feels_like":289.4,"temp_min":290.01,"temp_max":290.01,"pressure":1013,"humidity":63,"sea_level":1013,"grnd_level":992},"visibility":10000,"wind":{"speed":1.9,"deg":239,"gust":2.09},"clouds":{"all":72},"dt":1629406070,"sys":{"country":"BY","sunrise":1629341045,"sunset":1629393649},"timezone":10800,"id":625665,"name":"Mogilev","cod":200}
+
+
+https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key} шаблон
+https://api.openweathermap.org/data/2.5/onecall?lat=53.9139&lon=30.3364&exclude=hourly,daily&units=metric&lang=ru&appid=19c0bee458ab65a261e79f492074b660 //запрос для Могилева
+http://api.openweathermap.org/data/2.5/forecast?q=Mogilev&units=metric&lang=ru&appid=19c0bee458ab65a261e79f492074b660 //на неделю
++стилизовать компонент давления
+-стилизовать компонент ветра
+-сделать карту
+-иконки погоды должны меняться
+-добавить выбор города
+-добавить недельное отображение погоды
+-добавить дату и время
+-темная тема
+-сделать адаптив
+-залить на хостинг
