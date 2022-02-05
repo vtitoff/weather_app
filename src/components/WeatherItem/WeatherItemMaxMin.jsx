@@ -9,10 +9,10 @@ const WeatherItemMaxMin = (props) => {
   let MinTemp = Math.floor(Number(JSON.stringify(props.temp_min)));
   return (
     <div className={classes.weatherItem}>
-      <div className={classes.weatherItemMaxMin__inner}>
         <div className={classes.weatherItemTitle}>Макс. и мин. температура</div>
-        <div className={classes.weatherItemMaxTemp}>{MaxTemp}</div>
-        <div className={classes.weatherItemMinTemp}>{MinTemp}</div>
+      <div className={classes.weatherItemMaxMin__inner}>
+        <div className={classes.weatherItemMaxTemp}>Max {MaxTemp}</div>
+        <div className={classes.weatherItemMinTemp}>Min {MinTemp}</div>
       </div>
     </div>
   );

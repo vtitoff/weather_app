@@ -13,8 +13,8 @@ const WeatherItemTemp = (props) => {
         <div className={classes.weatherItemTemp__box}>
           <img className={classes.weatherItemImg} src={weatherImage}></img>
           <div className={classes.weatherItemTemp__num}>{currentTemp}</div>
+          <div className={classes.weatherItemTemp__desc}>{props.desc}</div>
         </div>
-        <div className={classes.weatherItemTemp__desc}>{props.desc}</div>
       </div>
 
     </div>

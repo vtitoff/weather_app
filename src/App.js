@@ -5,8 +5,8 @@ import WeatherItemTemp from './components/WeatherItem/WeatherItemTemp';
 import WeatherItemMaxMin from './components/WeatherItem/WeatherItemMaxMin';
 import WeatherItemPressure from './components/WeatherItem/WeatherItemPressure';
 import WeatherItemWind from './components/WeatherItem/WeatherItemWind';
+import WeatherMap from "./components/WeatherMap/WeatherMap";
 import Title from './components/Title/Title';
-
 
 function App() {
     let data = {
@@ -59,59 +59,35 @@ function App() {
     //   .then(json => setWeatherData(json)) // потом включить, пока заменим запрос с сервера статичным json
 
 
-    // useEffect(() => {
-    //   const L = require('leaflet');
-    //   let current_lat = 53.9139;
-    //   let current_long = 30.3364;
-    //   let current_zoom = 16;
-    //   let center_lat = current_lat;
-    //   let center_long = current_long;
-    //   let center_zoom = current_zoom;
-    //   let map = L.map('map', {
-    //     center: [center_lat, center_long],
-    //     zoom: center_zoom
-    //   });
-    //   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    //     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    //   }).addTo(map);
-    // });
-
-
     return (
         <div className="App">
-            <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow navbar__header">
-                <form
-                    className="navbar__form">
-                    <div className="input navbar__input">
-                        <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2"/>
-                        <div className="input-group-append">
-                            <button className="btn btn-primary" type="button">
-                                <i className="fas fa-search fa-sm"></i>
-                            </button>
+            <nav className="navbar navbar-light bg-light">
+                <div className="container-fluid">
+                    <a className="navbar-brand">Weather</a>
+                    <form className="d-flex">
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+            <div className="content">
+                <div className="container">
+                    <Title text={city}></Title>
+                    <Title text="Сегодня"></Title>
+                    <div className="weather__items-inner">
+                        <div>
+                            <WeatherItemMaxMin temp_min={weatherData.main.temp_min}
+                                               temp_max={weatherData.main.temp_max}></WeatherItemMaxMin>
+                            <WeatherItemPressure pressure={weatherData.main.pressure}></WeatherItemPressure>
+                        </div>
+                        <div>
+                            <WeatherItemTemp temp={weatherData.main.temp} desc={weatherData.weather[0].description}
+                                             image={weatherData.weather[0].icon}></WeatherItemTemp>
+                            <WeatherItemWind wind_speed={weatherData.wind.speed}
+                                             wind_deg={weatherData.wind.deg}></WeatherItemWind>
                         </div>
                     </div>
-                </form>
-            </nav>
-            <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap')
-            </style>
-            <div className="container">
-                <Title text={city}></Title>
-                <Title text="Сегодня"></Title>
-                <div className="weather__items-inner">
-                    <div>
-                        <WeatherItemMaxMin temp_min={weatherData.main.temp_min}
-                                           temp_max={weatherData.main.temp_max}></WeatherItemMaxMin>
-                        <WeatherItemPressure pressure={weatherData.main.pressure}></WeatherItemPressure>
-                    </div>
-                    <div>
-                        <WeatherItemTemp temp={weatherData.main.temp} desc={weatherData.weather[0].description}
-                                         image={weatherData.weather[0].icon}></WeatherItemTemp>
-                        <WeatherItemWind wind_speed={weatherData.wind.speed}
-                                         wind_deg={weatherData.wind.deg}></WeatherItemWind>
-                    </div>
-                    {/*<WeatherMap></WeatherMap>*/}
-                    {/* <div className={classes.weatherMap} id="map"></div> */}
+                    <WeatherMap></WeatherMap>
                 </div>
             </div>
         </div>

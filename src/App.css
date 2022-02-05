@@ -43,6 +43,7 @@
   justify-content: space-around;
 }
 
-.navbar__header{
-  display: flex;
+.content{
+  background-color: #ececec;
+  height: 100vh;
 }
