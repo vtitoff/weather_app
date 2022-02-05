@@ -7,6 +7,7 @@ import WeatherItemPressure from './components/WeatherItem/WeatherItemPressure';
 import WeatherItemWind from './components/WeatherItem/WeatherItemWind';
 import WeatherMap from "./components/WeatherMap/WeatherMap";
 import Title from './components/Title/Title';
+import 'leaflet/dist/leaflet.css';
 
 function App() {
     let data = {
@@ -87,7 +88,7 @@ function App() {
                                              wind_deg={weatherData.wind.deg}></WeatherItemWind>
                         </div>
                     </div>
-                    <WeatherMap></WeatherMap>
+                    <WeatherMap lat = {weatherData.coord.lat} lng = {weatherData.coord.lon}></WeatherMap>
                 </div>
             </div>
         </div>

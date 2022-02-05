@@ -5,3 +5,6 @@
     background-color: gray;
     min-height: 200px;
 }
+.mapContainer{
+    height: 400px;
+}
