@@ -88,7 +88,7 @@ function App() {
                                              wind_deg={weatherData.wind.deg}></WeatherItemWind>
                         </div>
                     </div>
-                    <WeatherMap lat = {weatherData.coord.lat} lng = {weatherData.coord.lon}></WeatherMap>
+                    <WeatherMap lat={weatherData.coord.lat} lng={weatherData.coord.lon}></WeatherMap>
                 </div>
             </div>
         </div>
