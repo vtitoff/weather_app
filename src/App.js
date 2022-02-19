@@ -75,7 +75,8 @@ function App() {
                 <div className="container">
                     <Title text={city}></Title>
                     <Title text="Сегодня"></Title>
-                    <div className="weather__items-inner">
+                    <div className="weather-items__wrapper">
+                        <div className="weather__items-inner">
                         <div>
                             <WeatherItemMaxMin temp_min={weatherData.main.temp_min}
                                                temp_max={weatherData.main.temp_max}></WeatherItemMaxMin>
@@ -88,7 +89,10 @@ function App() {
                                              wind_deg={weatherData.wind.deg}></WeatherItemWind>
                         </div>
                     </div>
-                    <WeatherMap lat={weatherData.coord.lat} lng={weatherData.coord.lon}></WeatherMap>
+                        <WeatherMap lat={weatherData.coord.lat} lng={weatherData.coord.lon}></WeatherMap>
+                    </div>
+
+
                 </div>
             </div>
         </div>

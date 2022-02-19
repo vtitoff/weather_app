@@ -15,7 +15,7 @@ class WeatherMap extends React.Component {
 
     render() {
         return (
-            <MapContainer center={[this.props.lat, this.props.lng]} zoom={13} className={classes.mapContainer}>
+            <MapContainer center={[this.props.lat, this.props.lng]} zoom={5} className={classes.mapContainer}>
                 <LayerGroup>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -28,7 +28,6 @@ class WeatherMap extends React.Component {
                 </LayerGroup>
             </MapContainer>
         )
-
     }
 }
 

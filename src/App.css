@@ -34,10 +34,15 @@
 
 .weather__items-inner{
   display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
+.weather-items__wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+}
 .weather__box{
   display: flex;
   justify-content: space-around;
