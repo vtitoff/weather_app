@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 import WeatherItemTemp from './components/WeatherItem/WeatherItemTemp';
-import WeatherItemMaxMin from './components/WeatherItem/WeatherItemMaxMin';
 import WeatherItemPressure from './components/WeatherItem/WeatherItemPressure';
 import WeatherItemWind from './components/WeatherItem/WeatherItemWind';
 import WeatherMap from "./components/WeatherMap/WeatherMap";
@@ -73,26 +72,20 @@ function App() {
             </nav>
             <div className="content">
                 <div className="container">
-                    <Title text={city}></Title>
-                    <Title text="Сегодня"></Title>
+                    <Title text={city}/>
+                    <Title text="Сегодня"/>
                     <div className="weather-items__wrapper">
                         <div className="weather__items-inner">
-                        <div>
-                            <WeatherItemMaxMin temp_min={weatherData.main.temp_min}
-                                               temp_max={weatherData.main.temp_max}></WeatherItemMaxMin>
-                            <WeatherItemPressure pressure={weatherData.main.pressure}></WeatherItemPressure>
+                            <div>
+                                <WeatherItemPressure pressure={weatherData.main.pressure}/>
+                                <WeatherItemTemp temp={weatherData.main.temp} desc={weatherData.weather[0].description}
+                                                 image={weatherData.weather[0].icon}/>
+                                <WeatherItemWind wind_speed={weatherData.wind.speed}
+                                                 wind_deg={weatherData.wind.deg}/>
+                            </div>
                         </div>
-                        <div>
-                            <WeatherItemTemp temp={weatherData.main.temp} desc={weatherData.weather[0].description}
-                                             image={weatherData.weather[0].icon}></WeatherItemTemp>
-                            <WeatherItemWind wind_speed={weatherData.wind.speed}
-                                             wind_deg={weatherData.wind.deg}></WeatherItemWind>
-                        </div>
-                    </div>
                         <WeatherMap lat={weatherData.coord.lat} lng={weatherData.coord.lon}></WeatherMap>
                     </div>
-
-
                 </div>
             </div>
         </div>
