@@ -7,6 +7,7 @@ import WeatherItemWind from './components/WeatherItem/WeatherItemWind';
 import WeatherMap from "./components/WeatherMap/WeatherMap";
 import Title from './components/Title/Title';
 import 'leaflet/dist/leaflet.css';
+import Bar from "./components/Bar/Bar";
 
 function App() {
     let data = {
@@ -65,7 +66,7 @@ function App() {
                 <div className="container-fluid">
                     <a className="navbar-brand">Weather</a>
                     <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <Bar/>
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
