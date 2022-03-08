@@ -13,9 +13,6 @@ class WeatherMap extends React.Component {
         };
     }
 
-    // handleChange(e) {
-    //     this.props.onTemperatureChange(e.target.value);
-    // }
 
     render() {
         return (

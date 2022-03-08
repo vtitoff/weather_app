@@ -53,27 +53,34 @@ function App() {
         "name": "Mogilev",
         "cod": 200
     }
-    const [weatherData, setWeatherData] = useState(data);
     let city = 'Mogilev'
-    // fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=ru&appid=19c0bee458ab65a261e79f492074b660`)
-    //   .then(response => response.json())
-    //   .then(json => setWeatherData(json)) // потом включить, пока заменим запрос с сервера статичным json
 
+    const [weatherData, setWeatherData] = useState(data);
+    const [cityValue, setCityValue] = useState(city)
+
+    function update_data(cityValue) {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=19c0bee458ab65a261e79f492074b660`)
+            .then(response => response.json())
+            .then(json => setWeatherData(json)) // потом включить, пока заменим запрос с сервера статичным json
+    }
+
+    function changeCityValue(e) {
+        setCityValue(e.target.value)
+        console.log('пришли данные из компонента bar')
+        console.log(`ENV ${process.env}`)
+    }
 
     return (
         <div className="App">
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
                     <a className="navbar-brand">Weather</a>
-                    <form className="d-flex">
-                        <Bar/>
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    <Bar cityValue={cityValue} changeCityValue={changeCityValue}/>
                 </div>
             </nav>
             <div className="content">
                 <div className="container">
-                    <Title text={city}/>
+                    <Title text={cityValue}/>
                     <Title text="Сегодня"/>
                     <div className="weather-items__wrapper">
                         <div className="weather__items-inner">
@@ -85,7 +92,7 @@ function App() {
                                                  wind_deg={weatherData.wind.deg}/>
                             </div>
                         </div>
-                        <WeatherMap lat={weatherData.coord.lat} lng={weatherData.coord.lon}></WeatherMap>
+                        <WeatherMap lat={weatherData.coord.lat} lng={weatherData.coord.lon}/>
                     </div>
                 </div>
             </div>
