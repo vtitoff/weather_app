@@ -9,6 +9,8 @@ import Title from './components/Title/Title';
 import 'leaflet/dist/leaflet.css';
 import Bar from "./components/Bar/Bar";
 
+const WEATHER_APP_TOKEN = process.env.REACT_APP_WEATHER_APP_TOKEN
+
 function App() {
     let data = {
         "coord": {
@@ -59,15 +61,16 @@ function App() {
     const [cityValue, setCityValue] = useState(city)
 
     function update_data(cityValue) {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=19c0bee458ab65a261e79f492074b660`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=${WEATHER_APP_TOKEN}`)
             .then(response => response.json())
-            .then(json => setWeatherData(json)) // потом включить, пока заменим запрос с сервера статичным json
+            .then(json => setWeatherData(json))
     }
+
+    // update_data(city) // потом включить, пока заменим запрос с сервера статичным json
 
     function changeCityValue(e) {
         setCityValue(e.target.value)
         console.log('пришли данные из компонента bar')
-        console.log(`ENV ${process.env}`)
     }
 
     return (
