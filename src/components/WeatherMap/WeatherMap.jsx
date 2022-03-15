@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './WeatherMap.module.css'
 import {LayerGroup, MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
+import {useState} from 'react';
 
 class WeatherMap extends React.Component {
     constructor(props) {
@@ -12,11 +13,11 @@ class WeatherMap extends React.Component {
             zoom: 10
         };
     }
-
+    // const [position, setPosition] = useState('')
 
     render() {
         return (
-            <MapContainer center={[this.props.lat, this.props.lng]} zoom={5} className={classes.mapContainer}>
+            <MapContainer center={[this.props.coords['lat'], this.props.coords['lng']]} zoom={5} className={classes.mapContainer}>
                 <LayerGroup>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

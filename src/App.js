@@ -59,12 +59,15 @@ function App() {
 
     const [weatherData, setWeatherData] = useState(data);
     const [cityValue, setCityValue] = useState(weatherData.name)
+    const [coords, setCoords] = useState({'lat': weatherData.coord.lat, 'lng': weatherData.coord.lon})
 
     function update_data(cityValue) {
         console.log(`update_data ${cityValue}`)
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=${WEATHER_APP_TOKEN}`)
             .then(response => response.json())
             .then(json => setWeatherData(json))
+            .then(setCoords({'lat': weatherData.coord.lat, 'lng': weatherData.coord.lon}))
+            .then(console.log(coords))
     }
 
     // update_data(city) // потом включить, пока заменим запрос с сервера статичным json
@@ -73,7 +76,7 @@ function App() {
         setCityValue(e.target.value);
     }
 
-    function testButton(e) {
+    function submitButton(e) {
         e.preventDefault()
         update_data(cityValue)
     }
@@ -83,7 +86,7 @@ function App() {
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
                     <a className="navbar-brand">Weather</a>
-                    <Bar cityValue={cityValue} changeCityValue={changeCityValue} testButton={testButton}/>
+                    <Bar cityValue={cityValue} changeCityValue={changeCityValue} submitButton={submitButton}/>
                 </div>
             </nav>
             <div className="content">
@@ -100,7 +103,7 @@ function App() {
                                                  wind_deg={weatherData.wind.deg}/>
                             </div>
                         </div>
-                        <WeatherMap lat={weatherData.coord.lat} lng={weatherData.coord.lon}/>
+                        <WeatherMap coords={coords}/>
                     </div>
                 </div>
             </div>
