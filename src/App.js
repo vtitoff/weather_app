@@ -58,9 +58,10 @@ function App() {
     let city = 'Mogilev'
 
     const [weatherData, setWeatherData] = useState(data);
-    const [cityValue, setCityValue] = useState(city)
+    const [cityValue, setCityValue] = useState(weatherData.name)
 
     function update_data(cityValue) {
+        console.log(`update_data ${cityValue}`)
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=${WEATHER_APP_TOKEN}`)
             .then(response => response.json())
             .then(json => setWeatherData(json))
@@ -69,8 +70,12 @@ function App() {
     // update_data(city) // потом включить, пока заменим запрос с сервера статичным json
 
     function changeCityValue(e) {
-        setCityValue(e.target.value)
-        console.log('пришли данные из компонента bar')
+        setCityValue(e.target.value);
+    }
+
+    function testButton(e) {
+        e.preventDefault()
+        update_data(cityValue)
     }
 
     return (
@@ -78,7 +83,7 @@ function App() {
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
                     <a className="navbar-brand">Weather</a>
-                    <Bar cityValue={cityValue} changeCityValue={changeCityValue}/>
+                    <Bar cityValue={cityValue} changeCityValue={changeCityValue} testButton={testButton}/>
                 </div>
             </nav>
             <div className="content">
@@ -88,7 +93,7 @@ function App() {
                     <div className="weather-items__wrapper">
                         <div className="weather__items-inner">
                             <div>
-                                <WeatherItemPressure pressure={weatherData.main.pressure}/>
+                                <WeatherItemPressure pressure={weatherData.main.pressure} city={weatherData.name}/>
                                 <WeatherItemTemp temp={weatherData.main.temp} desc={weatherData.weather[0].description}
                                                  image={weatherData.weather[0].icon}/>
                                 <WeatherItemWind wind_speed={weatherData.wind.speed}

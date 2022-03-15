@@ -9,7 +9,7 @@ const WeatherItemPressure = (props) => {
     <div className={classes.weatherItem}>
       <div className={classes.weatherItemPressure__inner}>
         <div className={classes.weatherItemTitle}>Давление воздуха</div>
-        <div className={classes.weatherItemPressureValue}>{props.pressure} Па</div>
+        <div className={classes.weatherItemPressureValue}>{props.pressure} Па {props.city}</div>
       </div>
 
     </div>
