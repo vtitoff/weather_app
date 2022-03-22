@@ -58,35 +58,31 @@ function App() {
     let city = 'Mogilev'
 
     const [weatherData, setWeatherData] = useState(data);
-    const [cityValue, setCityValue] = useState(weatherData.name)
-    const [coords, setCoords] = useState({'lat': weatherData.coord.lat, 'lng': weatherData.coord.lon})
+    const [coords, setCoords] = useState([weatherData.coord.lat, weatherData.coord.lon])
+    const [cityValue, setCityValue] = useState('Mogilev')
 
     function update_data(cityValue) {
         console.log(`update_data ${cityValue}`)
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=${WEATHER_APP_TOKEN}`)
             .then(response => response.json())
             .then(json => setWeatherData(json))
-            .then(setCoords({'lat': weatherData.coord.lat, 'lng': weatherData.coord.lon}))
+            .then(setCoords([weatherData.coord.lat, weatherData.coord.lon]))
             .then(console.log(coords))
     }
 
     // update_data(city) // потом включить, пока заменим запрос с сервера статичным json
 
-    function changeCityValue(e) {
-        setCityValue(e.target.value);
-    }
 
-    function submitButton(e) {
-        e.preventDefault()
-        update_data(cityValue)
+    function updateCoords(e){
+        setCoords([weatherData.coord.lat, weatherData.coord.lon])
     }
-
+    console.log('render App...')
     return (
         <div className="App">
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
                     <a className="navbar-brand">Weather</a>
-                    <Bar cityValue={cityValue} changeCityValue={changeCityValue} submitButton={submitButton}/>
+                    <Bar city={cityValue} cityChange={setCityValue} submit={update_data}/>
                 </div>
             </nav>
             <div className="content">
@@ -103,7 +99,7 @@ function App() {
                                                  wind_deg={weatherData.wind.deg}/>
                             </div>
                         </div>
-                        <WeatherMap coords={coords}/>
+                        <WeatherMap coords={coords} setCoords={updateCoords}/>
                     </div>
                 </div>
             </div>
