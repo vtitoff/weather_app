@@ -1,7 +1,5 @@
 import React from 'react'
 import classes from './WeatherItem.module.css'
-import {useState} from 'react';
-import {useRef} from 'react';
 
 const WeatherItemTemp = (props) => {
     let currentTemp = Math.floor(Number(JSON.stringify(props.temp)));

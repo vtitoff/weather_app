@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './WeatherMap.module.css'
-import {LayerGroup, MapContainer, Marker, Popup, TileLayer, useMap, useMapEvent} from 'react-leaflet'
+import {LayerGroup, MapContainer, TileLayer, useMap} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import {useState} from 'react';
 
@@ -8,10 +8,19 @@ import {useState} from 'react';
 const WeatherMap = (props) => {
     // const [position, setPosition] = useState({'lat': props.coords['lat'], 'lng': props.coords['lng']})
     console.log('render map...')
+    let center = [props.coords[0], props.coords[1]]
+    console.log(`center ${center}`)
+
+    function MyComponent(props) {
+        const map = useMap();
+        map.setView(center, 5);
+        return null;
+    }
 
     return (
-        <MapContainer center={[props.coords[0], props.coords[1]]} zoom={5}
+        <MapContainer center={center} zoom={5}
                       className={classes.mapContainer}>
+            <MyComponent/>
             <LayerGroup>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
