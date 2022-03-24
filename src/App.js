@@ -63,6 +63,7 @@ function App() {
 
     function update_data(cityValue) {
         console.log(`update_data ${cityValue}`)
+        console.log('Click!')
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=${WEATHER_APP_TOKEN}`)
             .then(response => response.json())
             .then(json => setWeatherData(json))
@@ -70,12 +71,7 @@ function App() {
             .then(console.log(coords))
     }
 
-    // update_data(city) // потом включить, пока заменим запрос с сервера статичным json
 
-
-    function updateCoords(e){
-        setCoords([weatherData.coord.lat, weatherData.coord.lon])
-    }
     console.log('render App...')
     return (
         <div className="App">
@@ -99,7 +95,7 @@ function App() {
                                                  wind_deg={weatherData.wind.deg}/>
                             </div>
                         </div>
-                        <WeatherMap coords={coords} setCoords={updateCoords}/>
+                        <WeatherMap coords={coords}/>
                     </div>
                 </div>
             </div>

@@ -1,16 +1,15 @@
-import React, {useState} from 'react'
+import React from 'react'
 import classes from './Bar.module.css'
-import {preventDefault} from "leaflet/src/dom/DomEvent";
 
 const Bar = (props) => {
-    const [cityValue, setCityValue] = useState(props.city)
+    let cityValue = props.city
 
     function changeCityValue(e) {
         props.cityChange(e.target.value);
         console.log(`cityValue Bar ${cityValue}`)
     }
 
-    function clickButton(){
+    function clickButton() {
         props.submit(props.city)
     }
 

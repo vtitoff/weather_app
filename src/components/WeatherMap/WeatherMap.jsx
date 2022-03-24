@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import classes from './WeatherMap.module.css'
 import {LayerGroup, MapContainer, TileLayer, useMap} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
@@ -6,7 +6,6 @@ import {useState} from 'react';
 
 
 const WeatherMap = (props) => {
-    // const [position, setPosition] = useState({'lat': props.coords['lat'], 'lng': props.coords['lng']})
     console.log('render map...')
     let center = [props.coords[0], props.coords[1]]
     console.log(`center ${center}`)
@@ -36,4 +35,4 @@ const WeatherMap = (props) => {
 }
 
 
-export default WeatherMap;
+export default React.memo(WeatherMap);
