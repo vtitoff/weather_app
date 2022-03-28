@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import WeatherItemTemp from './components/WeatherItem/WeatherItemTemp';
 import WeatherItemPressure from './components/WeatherItem/WeatherItemPressure';
 import WeatherItemWind from './components/WeatherItem/WeatherItemWind';
@@ -66,11 +66,11 @@ function App() {
         console.log('Click!')
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&lang=ru&appid=${WEATHER_APP_TOKEN}`)
             .then(response => response.json())
-            .then(json => setWeatherData(json))
-            .then(setCoords([weatherData.coord.lat, weatherData.coord.lon]))
-            .then(console.log(coords))
+            .then(json => {
+                setCoords([json.coord.lat, json.coord.lon])
+                setWeatherData(json)
+            });
     }
-
 
     console.log('render App...')
     return (
