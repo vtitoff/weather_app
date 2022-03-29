@@ -52,7 +52,7 @@ function App() {
         },
         "timezone": 10800,
         "id": 625665,
-        "name": "Mogilev",
+        "name": "Могилев",
         "cod": 200
     }
     let city = 'Mogilev'
@@ -83,12 +83,12 @@ function App() {
             </nav>
             <div className="content">
                 <div className="container">
-                    <Title text={cityValue}/>
+                    <Title text={weatherData.name}/>
                     <Title text="Сегодня"/>
                     <div className="weather-items__wrapper">
                         <div className="weather__items-inner">
                             <div>
-                                <WeatherItemPressure pressure={weatherData.main.pressure} city={weatherData.name}/>
+                                <WeatherItemPressure pressure={weatherData.main.pressure}/>
                                 <WeatherItemTemp temp={weatherData.main.temp} desc={weatherData.weather[0].description}
                                                  image={weatherData.weather[0].icon}/>
                                 <WeatherItemWind wind_speed={weatherData.wind.speed}
